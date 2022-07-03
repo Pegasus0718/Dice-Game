@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dicee</title>
+    <link rel="stylesheet" href="C:\Users\guler\OneDrive\Desktop\web\dice.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Let's have Fun</h1>
+
+      <div class="dice">
+        <p class="first">Player 1</p>
+        <img class="img1" src="dicepics/dice1.png" />
+      </div>
+
+      <div class="dice">
+        <p class="second">Player 2</p>
+        <img class="img2" src="dicepics/dice4.png" />
+      </div>
+        <div class="name">
+        <button class="btn" onclick="changenames()">Change Name</button>
+        </div>
+        <div class="start">
+        <button class="btn" onclick="start()">Start</button>
+                </div>
+    </div>
+      <script>
+        var p1 = "Player 1";
+        var p2 = "Player 2";
+        function changenames() {
+            p1 = prompt("Change Player1");
+            p2 = prompt("Change player2");
+  
+            document.querySelector(".first")
+                            .innerHTML = p1;
+                              
+            document.querySelector(".second")
+                            .innerHTML = p2;
+        }
+        function start() {
+            setTimeout(function () {
+                var random_no1 = Math.floor(Math.random() * 6) + 1;
+                var random_no2 = Math.floor(Math.random() * 6) + 1;
+  
+                document.querySelector(".img1").setAttribute("src",
+                    "dicepics/dice" + random_no1 + ".png");
+  
+                document.querySelector(".img2").setAttribute("src",
+                    "dicepics/dice" + random_no2+ ".png");
+  
+                if (random_no1 === random_no2) {
+                    document.querySelector("h1").innerHTML = "Draw!";
+                }
+  
+                else if (random_no1 < random_no2) {
+                    document.querySelector("h1").innerHTML
+                        = (p2 + " WINS!");
+                }
+  
+                else {
+                    document.querySelector("h1").innerHTML
+                        = (p1 + " WINS!");
+                }
+            }, 1000);
+        }
+    </script>
+  </body>
+</html>
